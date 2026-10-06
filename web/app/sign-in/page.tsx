@@ -34,8 +34,8 @@ export default function SignInPage() {
     <main className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Sign in</CardTitle>
-          <CardDescription>Access your agency dashboard.</CardDescription>
+          <CardTitle>تسجيل الدخول</CardTitle>
+          <CardDescription>ادخل إلى لوحة تحكم وكالتك.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={onSubmit} className="space-y-4">

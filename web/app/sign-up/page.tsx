@@ -34,21 +34,21 @@ export default function SignUpPage() {
     <main className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Create your account</CardTitle>
-          <CardDescription>Start managing Google Ads accounts.</CardDescription>
+          <CardTitle>إنشاء حسابك</CardTitle>
+          <CardDescription>ابدأ بإدارة حسابات Google Ads باحتراف.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={onSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">الاسم</Label>
               <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">البريد الإلكتروني</Label>
               <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">كلمة المرور</Label>
               <Input
                 id="password"
                 type="password"
@@ -57,7 +57,7 @@ export default function SignUpPage() {
                 minLength={12}
                 required
               />
-              <p className="text-xs text-[var(--muted-foreground)]">At least 12 characters.</p>
+              <p className="text-xs text-[var(--muted-foreground)]">12 حرفاً على الأقل.</p>
             </div>
             {error && <p className="text-sm text-[var(--destructive)]">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>

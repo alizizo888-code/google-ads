@@ -35,14 +35,14 @@ export default function DashboardPage() {
   }, [isPending, session, router]);
 
   if (isPending || !session) {
-    return <main className="flex min-h-screen items-center justify-center text-sm text-[var(--muted-foreground)]">Loading…</main>;
+    return <main className="flex min-h-screen items-center justify-center text-sm text-[var(--muted-foreground)]">جارٍ التحميل…</main>;
   }
 
   return (
-    <main className="mx-auto max-w-5xl space-y-6 p-6">
-      <header className="flex items-center justify-between">
+    <main className="mx-auto max-w-6xl space-y-8 p-4 sm:p-8">
+      <header className="flex flex-col gap-5 rounded-2xl border border-white/70 bg-white/80 p-5 shadow-sm backdrop-blur sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-xl font-semibold">Google Ads MCP</h1>
+          <h1 className="text-xl font-semibold">مركز نواة الإعلانات</h1>
           <p className="text-sm text-[var(--muted-foreground)]">{session.user.email}</p>
         </div>
         <Button variant="outline" onClick={() => signOut().then(() => router.replace("/sign-in"))}>
@@ -77,13 +77,13 @@ function CreateOrg() {
   return (
     <Card className="max-w-md">
       <CardHeader>
-        <CardTitle>Create your agency</CardTitle>
-        <CardDescription>An organization groups your team and Google Ads connections.</CardDescription>
+        <CardTitle>أنشئ وكالتك</CardTitle>
+        <CardDescription>اجمع فريقك واتصالات Google Ads في مساحة عمل واحدة آمنة.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="org">Agency name</Label>
+            <Label htmlFor="org">اسم الوكالة</Label>
             <Input id="org" value={name} onChange={(e) => setName(e.target.value)} required />
           </div>
           {error && <p className="text-sm text-[var(--destructive)]">{error}</p>}
@@ -125,21 +125,21 @@ function AgencyConsole() {
       <Card>
         <CardHeader className="flex-row items-center justify-between space-y-0">
           <div>
-            <CardTitle>Google Ads connections</CardTitle>
-            <CardDescription>Link the agency MCC or your own account.</CardDescription>
+            <CardTitle>اتصالات Google Ads</CardTitle>
+            <CardDescription>اربط حساب المدير (MCC) لإدارة حسابات العملاء من مكان واحد.</CardDescription>
           </div>
-          <Button onClick={startConnect}>Connect Google Ads</Button>
+          <Button onClick={startConnect}>ربط Google Ads</Button>
         </CardHeader>
         <CardContent>
           {connections.length === 0 ? (
-            <p className="text-sm text-[var(--muted-foreground)]">No connections yet. Click “Connect Google Ads”.</p>
+            <p className="text-sm text-[var(--muted-foreground)]">لا توجد اتصالات بعد. ابدأ بربط حساب Google Ads.</p>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead>Label</TableHead>
-                  <TableHead>Login MCC</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>حساب المدير</TableHead>
+                  <TableHead>الحالة</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -214,13 +214,13 @@ function TeamCard({ members }: { members: Member[] }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Team</CardTitle>
-        <CardDescription>Members of your agency and pending invitations.</CardDescription>
+        <CardTitle>الفريق</CardTitle>
+        <CardDescription>أعضاء الوكالة والدعوات المعلقة.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <form onSubmit={invite} className="flex flex-wrap items-end gap-3">
           <div className="space-y-1.5">
-            <Label htmlFor="invite-email">Invite by email</Label>
+            <Label htmlFor="invite-email">دعوة عبر البريد</Label>
             <Input
               id="invite-email"
               type="email"
@@ -246,9 +246,9 @@ function TeamCard({ members }: { members: Member[] }) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Email</TableHead>
+              <TableHead>البريد الإلكتروني</TableHead>
               <TableHead>Role</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>الحالة</TableHead>
               <TableHead />
             </TableRow>
           </TableHeader>
@@ -272,7 +272,7 @@ function TeamCard({ members }: { members: Member[] }) {
                   <Badge variant="muted">{i.role ?? "member"}</Badge>
                 </TableCell>
                 <TableCell>
-                  <Badge>invited</Badge>
+                  <Badge>مدعو</Badge>
                 </TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="sm" onClick={() => cancel(i.id)} disabled={busy}>
@@ -345,15 +345,15 @@ function GrantsCard({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Account access</CardTitle>
-        <CardDescription>Grant team members access to specific client accounts.</CardDescription>
+        <CardTitle>صلاحيات الحسابات</CardTitle>
+        <CardDescription>امنح كل عضو الصلاحية المناسبة على حسابات العملاء.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-wrap items-end gap-3">
           <div className="space-y-1.5">
-            <Label>Member</Label>
+            <Label>العضو</Label>
             <select className={selectClass} value={memberId} onChange={(e) => setMemberId(e.target.value)}>
-              <option value="">Select…</option>
+              <option value="">اختر…</option>
               {members.map((m) => (
                 <option key={m.id} value={m.id}>
                   {m.user.email}
@@ -362,9 +362,9 @@ function GrantsCard({
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label>Connection</Label>
+            <Label>الاتصال</Label>
             <select className={selectClass} value={connectionId} onChange={(e) => setConnectionId(e.target.value)}>
-              <option value="">Select…</option>
+              <option value="">اختر…</option>
               {connections.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.label}
@@ -373,7 +373,7 @@ function GrantsCard({
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label>Account</Label>
+            <Label>الحساب</Label>
             <select
               className={selectClass}
               value={customerId}
@@ -389,7 +389,7 @@ function GrantsCard({
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label>Level</Label>
+            <Label>المستوى</Label>
             <select className={selectClass} value={level} onChange={(e) => setLevel(e.target.value as AccessLevel)}>
               <option value="READ">READ</option>
               <option value="WRITE">WRITE</option>
@@ -406,10 +406,10 @@ function GrantsCard({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Member</TableHead>
-                <TableHead>Account</TableHead>
-                <TableHead>Connection</TableHead>
-                <TableHead>Level</TableHead>
+                <TableHead>العضو</TableHead>
+                <TableHead>الحساب</TableHead>
+                <TableHead>الاتصال</TableHead>
+                <TableHead>المستوى</TableHead>
                 <TableHead />
               </TableRow>
             </TableHeader>
