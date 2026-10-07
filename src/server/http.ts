@@ -454,7 +454,7 @@ app.get("/mcp", handleSessionRequest);
 app.delete("/mcp", handleSessionRequest);
 
 const port = Number(process.env.PORT ?? 3000);
-const httpServer = app.listen(port, () => {
+const httpServer = app.listen(port, "0.0.0.0", () => {
   logger.info(`Google Ads MCP HTTP server listening on :${port}`);
 });
 
