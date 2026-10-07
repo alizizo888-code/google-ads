@@ -2,19 +2,47 @@
   "name": "@automwise/google-ads-mcp",
   "version": "2.0.0",
   "description": "MCP server for the Google Ads API: read and manage campaigns, keywords, budgets, conversions, audiences, assets and Shopping from an AI assistant.",
-  "keywords": ["mcp","model-context-protocol","google-ads","google-ads-api","gaql","ppc","sem","adwords","merchant-center","performance-max","ai-agent"],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "google-ads",
+    "google-ads-api",
+    "gaql",
+    "ppc",
+    "sem",
+    "adwords",
+    "merchant-center",
+    "performance-max",
+    "ai-agent"
+  ],
   "homepage": "https://github.com/cristiandrei1234/google-ads-mcp#readme",
-  "bugs": {"url": "https://github.com/cristiandrei1234/google-ads-mcp/issues"},
-  "repository": {"type": "git","url": "git+https://github.com/cristiandrei1234/google-ads-mcp.git"},
+  "bugs": {
+    "url": "https://github.com/cristiandrei1234/google-ads-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiandrei1234/google-ads-mcp.git"
+  },
   "author": "Cristian Mihaila <cristian@automwise.com>",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "main": "dist/index.js",
-  "bin": {"google-ads-mcp": "dist/index.js"},
-  "files": ["dist","prisma"],
-  "engines": {"node": ">=22"},
-  "publishConfig": {"access": "public"},
-  "workspaces": ["packages/*"],
+  "bin": {
+    "google-ads-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "prisma"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "prisma generate && tsc",
     "start": "node app.js",
@@ -32,9 +60,9 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/sdk": "^1.31.0",
     "@opentelemetry/api": "^1.9.1",
-    "axios": "^1.19.0",
+    "axios": "^1.20.0",
     "dotenv": "^17.4.2",
     "google-ads-api": "^24.1.0",
     "google-auth-library": "^11.0.2",
@@ -74,21 +102,51 @@
     "resend": "^6.20.0"
   },
   "peerDependenciesMeta": {
-    "@better-auth/sso": {"optional": true},
-    "@prisma/adapter-pg": {"optional": true},
-    "@prisma/client": {"optional": true},
-    "@react-email/components": {"optional": true},
-    "@react-email/render": {"optional": true},
-    "better-auth": {"optional": true},
-    "cookie-parser": {"optional": true},
-    "cors": {"optional": true},
-    "express": {"optional": true},
-    "express-rate-limit": {"optional": true},
-    "express-session": {"optional": true},
-    "helmet": {"optional": true},
-    "react": {"optional": true},
-    "react-dom": {"optional": true},
-    "resend": {"optional": true}
+    "@better-auth/sso": {
+      "optional": true
+    },
+    "@prisma/adapter-pg": {
+      "optional": true
+    },
+    "@prisma/client": {
+      "optional": true
+    },
+    "@react-email/components": {
+      "optional": true
+    },
+    "@react-email/render": {
+      "optional": true
+    },
+    "better-auth": {
+      "optional": true
+    },
+    "cookie-parser": {
+      "optional": true
+    },
+    "cors": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
+    },
+    "express-rate-limit": {
+      "optional": true
+    },
+    "express-session": {
+      "optional": true
+    },
+    "helmet": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "resend": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.10",
@@ -104,7 +162,11 @@
     "prisma": "^7.9.1"
   },
   "overrides": {
-    "@prisma/config": {"deepmerge-ts": "^8.0.1"},
-    "gaxios": {"uuid": "^11.1.1"}
+    "@prisma/config": {
+      "deepmerge-ts": "^8.0.1"
+    },
+    "gaxios": {
+      "uuid": "^11.1.1"
+    }
   }
 }
